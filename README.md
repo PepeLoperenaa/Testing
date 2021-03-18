@@ -5,7 +5,7 @@ For the subject Testing in NHL Stenden Emmen.
 
 This Testing software will be done by A group of 4 members 
 
-Ian Donker 
+Ian Donker (4629981) 
 Marek Stryjenski 
 Aleksei Skorjak ()
 Pepe Loperena Monzón (4518381)
