@@ -59,6 +59,12 @@ public class Radio {
     }
 
     public boolean turnOnOff(){
-        return true; //if statement.
+        if (isStatus()){ //does this way actually works or does it need to be changed?
+            setStatus(false);
+        } else if (!isStatus()){
+            setStatus(true);
+        }
+
+        return true; // if it has worked return true?
     }
 }
