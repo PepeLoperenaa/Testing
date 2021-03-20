@@ -1,8 +1,7 @@
 import javax.print.attribute.standard.Media;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
+import javax.sound.sampled.*;
 import java.io.File;
+import java.io.IOException;
 import java.util.HashSet;
 
 public class Radio {
@@ -33,7 +32,11 @@ public class Radio {
     }
 
     public void setVolume(int volume) {
-        this.volume = volume;
+        if (volume > 20){
+            System.out.println("sorry you have reached the maximum volume");
+        } else {
+            this.volume = volume;
+        }
     }
 
     public double getFrequency() {
@@ -61,15 +64,18 @@ public class Radio {
     }
 
     public void playStatic(){
-       try {
-           AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(staticSound).getAbsoluteFile());
-           Clip clip = AudioSystem.getClip();
-           clip.open(audioInputStream);
-           clip.start();
-       } catch (Exception ex){
-           System.out.println("Error with playing sound");
-           ex.printStackTrace();
-       }
+        try{
+            File staticFile = new File("resources/static.wav");
+            AudioInputStream ais = AudioSystem.getAudioInputStream(staticFile);
+            Clip clip = AudioSystem.getClip();
+            clip.open(ais);
+            clip.setFramePosition(0);
+            clip.start();
+            Thread.sleep(clip.getMicrosecondLength()/1000);
+        } catch (InterruptedException exc) {} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e){
+            e.printStackTrace();
+        }
+
     }
 
     public boolean turnOnOff(){
