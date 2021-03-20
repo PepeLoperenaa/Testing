@@ -1,3 +1,8 @@
+import javax.print.attribute.standard.Media;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import java.io.File;
 import java.util.HashSet;
 
 public class Radio {
@@ -5,13 +10,14 @@ public class Radio {
     private int volume;
     private double frequency;
     private HashSet<RadioStation> radioStations;
-    private String StaticSound;
+    private String staticSound;
 
     public Radio() {
         this.status = false;
         this.volume = 0;
         this.frequency = frequency;
         this.radioStations = new HashSet<>();
+        this.staticSound = "static.mp3";
     }
 
     public boolean isStatus() {
@@ -47,15 +53,23 @@ public class Radio {
     }
 
     public String getStaticSound() {
-        return StaticSound; //name of the file or what file it is.
+        return staticSound; //name of the file or what file it is.
     }
 
     public void setStaticSound(String staticSound) {
-        StaticSound = staticSound; //fOpen static sound.
+        staticSound = staticSound; //fOpen static sound.
     }
 
     public void playStatic(){
-        //play the static sound. Method that helps others.
+       try {
+           AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("C:\\Users\\pepel\\OneDrive\\Escritorio\\Year 2\\Period 3\\Algorithms and Datastructures\\Testing\\static.wav").getAbsoluteFile());
+           Clip clip = AudioSystem.getClip();
+           clip.open(audioInputStream);
+           clip.start();
+       } catch (Exception ex){
+           System.out.println("Error with playing sound");
+           ex.printStackTrace();
+       }
     }
 
     public boolean turnOnOff(){
@@ -65,6 +79,6 @@ public class Radio {
             setStatus(true);
         }
 
-        return true; // if it has worked return true?
+        return isStatus();
     }
 }
