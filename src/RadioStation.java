@@ -37,5 +37,6 @@ public class RadioStation {
 
     public void playSongs(){
         //play a file song.
+        //Same issue as playing the static i cannot make it work
     }
 }

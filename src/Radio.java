@@ -17,7 +17,7 @@ public class Radio {
         this.volume = 0;
         this.frequency = frequency;
         this.radioStations = new HashSet<>();
-        this.staticSound = "static.mp3";
+        this.staticSound = "static.wav";
     }
 
     public boolean isStatus() {
@@ -62,7 +62,7 @@ public class Radio {
 
     public void playStatic(){
        try {
-           AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("C:\\Users\\pepel\\OneDrive\\Escritorio\\Year 2\\Period 3\\Algorithms and Datastructures\\Testing\\static.wav").getAbsoluteFile());
+           AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(staticSound).getAbsoluteFile());
            Clip clip = AudioSystem.getClip();
            clip.open(audioInputStream);
            clip.start();
