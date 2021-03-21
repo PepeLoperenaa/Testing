@@ -5,16 +5,16 @@ public class main {
         Song example = new Song("laPlacita");
         RadioStation rmfFm = new RadioStation("RmfFm", 86.75);
         RadioStation zet = new RadioStation("zet", 90);
-//        r1.addRadioStation(rmfFm);
-//        r1.addRadioStation(zet);
+        r1.addRadioStation(rmfFm);
+        r1.addRadioStation(zet);
 
 
 //        rmfFm.addSong(car);
-//        rmfFm.addSong(example);
+        rmfFm.addSong(example);
 //        zet.addSong(example);
 //        rmfFm.playSongs();
 
-        r1.setFrequency(70.00);
         r1.setFrequency(86.75);
+        r1.setFrequency(70.00);
     }
 }

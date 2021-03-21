@@ -18,32 +18,39 @@ public class Radio {
 
     /**
      * Sets the frequency of the radio. Used to change between stations
+     *
      * @param freq cannot be lower than 80 an cannot be higher than 120
      */
     public void setFrequency(double freq) {
-        if ((freq <= 80.0 || freq >= 120) && isStatus()) {
-            System.out.println("The frequency cannot be found");
-            playStatic();
-        } else {
-            if (this.radioStations.size() <= 0) {
-                System.out.println("No radioStations were added to hashSet");
+        if (isStatus()) {
+            if ((freq <= 80.0 || freq >= 120) && isStatus()) {
+                System.out.println("The frequency cannot be found");
                 playStatic();
             } else {
-                int count=0;
-                for (RadioStation radioStation :
-                        getRadioStations()) {
-                    if (radioStation.getFrequency() == freq) {
-                        radioStation.playSongs();
-                        count++;
+                if (this.radioStations.size() <= 0) {
+                    System.out.println("No radioStations were added to hashSet");
+                    playStatic();
+                } else {
+                    int count = 0;
+                    for (RadioStation radioStation :
+                            getRadioStations()) {
+                        if (radioStation.getFrequency() == freq) {
+                            radioStation.playSongs();
+                            count++;
+                        }
+                    }
+                    if (count == 0) {
+                        System.out.println("No radio station found on that frequency");
+                        playStatic();
                     }
                 }
-                if(count==0){
-                    System.out.println("No radio station found on that frequency");
-                    playStatic();
-                }
-            }
 
+            }
+        } else {
+            System.out.println("Radio is off");
         }
+
+
     }
 
     public boolean isStatus() {
@@ -59,11 +66,14 @@ public class Radio {
     }
 
     public void setVolume(int volume) {
-        if (volume > 20) {
-            System.out.println("sorry you have reached the maximum volume");
-        } else {
-            this.volume = volume;
-
+        if(isStatus()){
+            if (volume > 20) {
+                System.out.println("sorry you have reached the maximum volume");
+            } else {
+                this.volume = volume;
+            }
+        }else{
+            System.out.println("Radio is off");
         }
     }
 
@@ -84,19 +94,19 @@ public class Radio {
     }
 
     public void playStatic() {
-        try {
-            File staticFile = new File("songs/example.wav"); //need a static file if a frequency cant be found.
-            AudioInputStream ais = AudioSystem.getAudioInputStream(staticFile);
-            Clip clip = AudioSystem.getClip();
-            clip.open(ais);
-            clip.setFramePosition(0);
-            clip.start();
-            Thread.sleep(clip.getMicrosecondLength() / 1000);
-        } catch (InterruptedException exc) {
-        } catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
-            e.printStackTrace();
-        }
-
+//        try {
+//            File staticFile = new File("songs/car.wav"); //need a static file if a frequency cant be found.
+//            AudioInputStream ais = AudioSystem.getAudioInputStream(staticFile);
+//            Clip clip = AudioSystem.getClip();
+//            clip.open(ais);
+//            clip.setFramePosition(0);
+//            clip.start();
+//            Thread.sleep(clip.getMicrosecondLength() / 1000);
+//        } catch (InterruptedException exc) {
+//        } catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
+//            e.printStackTrace();
+//        }
+        System.out.println("static sound");
     }
 
     public boolean turnOnOff() {
