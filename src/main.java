@@ -1,10 +1,14 @@
 public class main {
     public static void main(String[] args) {
         Radio r1 = new Radio();
-        Song s=new Song("car");
-        s.playSong();
+//        Song car = new Song("car");
+        Song example = new Song("laPlacita");
 
-//        r1.playStatic();
+        RadioStation rmfFm = new RadioStation("RmfFm", 86.75);
+
+//        rmfFm.addSong(car);
+        rmfFm.addSong(example);
+        rmfFm.playSongs();
 
     }
 }

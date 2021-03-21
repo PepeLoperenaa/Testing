@@ -7,16 +7,13 @@ import java.util.HashSet;
 public class Radio {
     private boolean status;
     private int volume;
-    private double frequency;
     private HashSet<RadioStation> radioStations;
     private String staticSound;
 
     public Radio() {
         this.status = false;
         this.volume = 0;
-        this.frequency = frequency;
         this.radioStations = new HashSet<>();
-        this.staticSound = "static.wav";
     }
 
     public boolean isStatus() {
@@ -39,14 +36,6 @@ public class Radio {
         }
     }
 
-    public double getFrequency() {
-        return frequency;
-    }
-
-    public void setFrequency(double frequency) {
-        this.frequency = frequency;
-    }
-
     public void addRadioStations(RadioStation r){
         this.radioStations.add(r);
     }
@@ -59,8 +48,8 @@ public class Radio {
         return staticSound; //name of the file or what file it is.
     }
 
-    public void setStaticSound(String staticSound) {
-        staticSound = staticSound; //fOpen static sound.
+    public void addRadioStation(RadioStation r){
+        radioStations.add(r);
     }
 
     public void playStatic(){
@@ -84,7 +73,6 @@ public class Radio {
         } else if (!isStatus()){
             setStatus(true);
         }
-
         return isStatus();
     }
 }

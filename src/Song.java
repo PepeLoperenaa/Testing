@@ -17,7 +17,7 @@ public class Song {
 
     public void playSong(){
         try {
-            File soundFile = new File("songs/"+this.songName+".wav"); //com.nhlstenden.Sound file
+            File soundFile = new File("songs/"+this.songName+".wav");
 
             //Getting AudioInputStream
             //Can be thrown IOException и UnsupportedAudioFileException
@@ -46,13 +46,5 @@ public class Song {
 
     public void setSongName(String songName) {
         this.songName = songName;
-    }
-
-    public String getFileDirectory() {
-        return fileDirectory;
-    }
-
-    public void setFileDirectory(String fileDirectory) {
-        this.fileDirectory = fileDirectory;
     }
 }
