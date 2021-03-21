@@ -11,6 +11,19 @@ public class RadioStation {
         this.songs = new HashSet<>();
     }
 
+    public boolean addSong(Song song) {
+        if (song != null) {
+            if (!getSongs().contains(song)) {
+                getSongs().add(song);
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
     public String getName() {
         return name;
     }
@@ -31,12 +44,11 @@ public class RadioStation {
         return songs;
     }
 
-    public void addsSongs(Song s){
-        this.songs.add(s);
-    }
-
-    public void playSongs(){
-        //play a file song.
-        //Same issue as playing the static i cannot make it work
+    public void playSongs() {
+        for (Song song :
+                this.songs) {
+            System.out.println("Now playing " + song.getSongName());
+            song.playSong();
+        }
     }
 }
