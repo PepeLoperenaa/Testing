@@ -66,13 +66,13 @@ public class Radio {
     }
 
     public void setVolume(int volume) {
-        if(isStatus()){
+        if (isStatus()) {
             if (volume > 20) {
                 System.out.println("sorry you have reached the maximum volume");
             } else {
                 this.volume = volume;
             }
-        }else{
+        } else {
             System.out.println("Radio is off");
         }
     }
@@ -94,18 +94,18 @@ public class Radio {
     }
 
     public void playStatic() {
-//        try {
-//            File staticFile = new File("songs/car.wav"); //need a static file if a frequency cant be found.
-//            AudioInputStream ais = AudioSystem.getAudioInputStream(staticFile);
-//            Clip clip = AudioSystem.getClip();
-//            clip.open(ais);
-//            clip.setFramePosition(0);
-//            clip.start();
-//            Thread.sleep(clip.getMicrosecondLength() / 1000);
-//        } catch (InterruptedException exc) {
-//        } catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            File staticFile = new File("songs/static.wav"); //need a static file if a frequency cant be found.
+            AudioInputStream ais = AudioSystem.getAudioInputStream(staticFile);
+            Clip clip = AudioSystem.getClip();
+            clip.open(ais);
+            clip.setFramePosition(0);
+            clip.start();
+            Thread.sleep(clip.getMicrosecondLength() / 1000);
+        } catch (InterruptedException exc) {
+        } catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        }
         System.out.println("static sound");
     }
 

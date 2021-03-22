@@ -7,6 +7,7 @@ public class main {
         RadioStation zet = new RadioStation("zet", 90);
         r1.addRadioStation(rmfFm);
         r1.addRadioStation(zet);
+        r1.turnOnOff();
 
 
 //        rmfFm.addSong(car);
@@ -14,7 +15,7 @@ public class main {
 //        zet.addSong(example);
 //        rmfFm.playSongs();
 
-        r1.setFrequency(86.75);
+        //r1.setFrequency(86.75);
         r1.setFrequency(70.00);
     }
 }
