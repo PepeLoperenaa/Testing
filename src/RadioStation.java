@@ -11,6 +11,11 @@ public class RadioStation {
         this.songs = new HashSet<>();
     }
 
+    /**
+     * Adding a song into the HashSet.
+     * @param song
+     * @return
+     */
     public boolean addSong(Song song) {
         if (song != null) {
             if (!getSongs().contains(song)) {
@@ -44,6 +49,9 @@ public class RadioStation {
         return songs;
     }
 
+    /**
+     * Plays all of the songs that can be found in the Hashset.
+     */
     public void playSongs() {
         for (Song song :
                 this.songs) {

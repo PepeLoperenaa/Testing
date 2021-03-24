@@ -65,6 +65,10 @@ public class Radio {
         return volume;
     }
 
+    /**
+     * Sets the volume of the radio. Range can only be between 0 and 20.
+     * @param volume
+     */
     public void setVolume(int volume) {
         if (isStatus()) {
             if (volume > 20) {
@@ -93,6 +97,9 @@ public class Radio {
         radioStations.add(r);
     }
 
+    /**
+     * Method which plays static sound. Helping method for other methods.
+     */
     public void playStatic() {
         try {
             File staticFile = new File("songs/static.wav"); //need a static file if a frequency cant be found.
@@ -109,8 +116,12 @@ public class Radio {
         System.out.println("static sound");
     }
 
+    /**
+     * Turns On or Off the radio depending on the status it is in.
+     * @return
+     */
     public boolean turnOnOff() {
-        if (isStatus()) { //does this way actually works or does it need to be changed?
+        if (isStatus()) {
             setStatus(false);
         } else if (!isStatus()) {
             setStatus(true);
