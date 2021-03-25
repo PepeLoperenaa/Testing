@@ -8,7 +8,6 @@ public class Radio {
     private boolean status;
     private int volume;
     private HashSet<RadioStation> radioStations;
-    private final String staticSound = "example.wav";
 
     public Radio() {
         this.status = false;
@@ -87,10 +86,6 @@ public class Radio {
 
     public HashSet<RadioStation> getRadioStations() {
         return radioStations;
-    }
-
-    public String getStaticSound() {
-        return staticSound; //name of the file or what file it is.
     }
 
     public void addRadioStation(RadioStation r) {
