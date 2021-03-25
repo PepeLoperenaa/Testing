@@ -1,4 +1,3 @@
-import javax.print.attribute.standard.Media;
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
@@ -66,7 +65,7 @@ public class Radio {
 
     /**
      * Sets the volume of the radio. Range can only be between 0 and 20.
-     * @param volume
+     * @param volume volume of the radio
      */
     public void setVolume(int volume) {
         if (isStatus()) {
@@ -113,14 +112,12 @@ public class Radio {
 
     /**
      * Turns On or Off the radio depending on the status it is in.
-     * @return
      */
-    public boolean turnOnOff() {
+    public void turnOnOff() {
         if (isStatus()) {
             setStatus(false);
         } else if (!isStatus()) {
             setStatus(true);
         }
-        return isStatus();
     }
 }
