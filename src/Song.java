@@ -4,7 +4,6 @@ import java.io.IOException;
 
 public class Song {
     private String songName;
-    private String fileDirectory;
 
     /**
      * The song that user wants to play has to be a .wav file and must be inside songs directory
@@ -15,6 +14,9 @@ public class Song {
 
     }
 
+    /**
+     * Playing a song methods. Helping method for other methods.
+     */
     public void playSong(){
         try {
             File soundFile = new File("songs/"+this.songName+".wav");
@@ -32,10 +34,6 @@ public class Song {
             clip.open(ais);
 
             clip.setFramePosition(0); //Setting pointer on start
-//            FloatControl gainControl =
-//                    (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-//            gainControl.setValue(-10.0f); // Reduce volume by 10 decibels.
-
             clip.start();
 
             Thread.sleep(clip.getMicrosecondLength()/1000);
