@@ -13,9 +13,9 @@ public class main {
 //        rmfFm.addSong(car);
         rmfFm.addSong(example);
 //        zet.addSong(example);
-//        rmfFm.playSongs();
+        rmfFm.playSongs();
 
         //r1.setFrequency(86.75);
-        r1.setFrequency(70.00);
+        //r1.setFrequency(70.00);
     }
 }

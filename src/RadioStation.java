@@ -55,7 +55,7 @@ public class RadioStation {
     public void playSongs() {
         for (Song song :
                 this.songs) {
-            System.out.println("Now playing " + song.getSongName());
+            System.out.println("Now playing " + song.getSongName() + " on " + getName());
             song.playSong();
         }
     }
