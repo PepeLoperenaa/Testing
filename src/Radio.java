@@ -19,11 +19,11 @@ public class Radio {
      *
      * @param freq cannot be lower than 80 an cannot be higher than 120
      */
-    public void setFrequency(double freq) {
+    public void setFrequency(double freq) throws FrequencyOutOfScopeException{
         if (isStatus()) {
             if ((freq <= 80.0 || freq >= 120) && isStatus()) {
-                System.out.println("The frequency cannot be found");
                 playStatic();
+                throw new FrequencyOutOfScopeException();
             } else {
                 if (this.radioStations.size() <= 0) {
                     System.out.println("No radioStations were added to hashSet");
