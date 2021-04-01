@@ -19,10 +19,9 @@ public class Radio {
      *
      * @param freq cannot be lower than 80 an cannot be higher than 120
      */
-    public void setFrequency(double freq) throws FrequencyOutOfScopeException{
+    public void setFrequency(double freq) throws FrequencyOutOfScopeException {
         if (isStatus()) {
             if ((freq <= 80.0 || freq >= 120) && isStatus()) {
-                playStatic();
                 throw new FrequencyOutOfScopeException();
             } else {
                 if (this.radioStations.size() <= 0) {
@@ -96,7 +95,7 @@ public class Radio {
      */
     public void playStatic() {
         try {
-            File staticFile = new File("songs/static.wav"); //need a static file if a frequency cant be found.
+            File staticFile = new File("songs/static.wav");
             AudioInputStream ais = AudioSystem.getAudioInputStream(staticFile);
             Clip clip = AudioSystem.getClip();
             clip.open(ais);
@@ -107,7 +106,6 @@ public class Radio {
         } catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
             e.printStackTrace();
         }
-        System.out.println("static sound");
     }
 
     /**

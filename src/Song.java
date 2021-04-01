@@ -7,6 +7,7 @@ public class Song {
 
     /**
      * The song that user wants to play has to be a .wav file and must be inside songs directory
+     *
      * @param songName name of the song
      */
     public Song(String songName) {
@@ -17,9 +18,9 @@ public class Song {
     /**
      * Playing a song methods. Helping method for other methods.
      */
-    public void playSong(){
+    public void playSong() {
         try {
-            File soundFile = new File("songs/"+this.songName+".wav");
+            File soundFile = new File("songs/" + this.songName + ".wav");
 
             //Getting AudioInputStream
             //Can be thrown IOException и UnsupportedAudioFileException
@@ -36,12 +37,13 @@ public class Song {
             clip.setFramePosition(0); //Setting pointer on start
             clip.start();
 
-            Thread.sleep(clip.getMicrosecondLength()/1000);
-        }
-        catch (InterruptedException exc) {} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
+            Thread.sleep(clip.getMicrosecondLength() / 1000);
+        } catch (InterruptedException exc) {
+        } catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
             e.printStackTrace();
         }
     }
+
     public String getSongName() {
         return songName;
     }
