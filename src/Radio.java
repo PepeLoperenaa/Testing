@@ -62,6 +62,10 @@ public class Radio {
         return volume;
     }
 
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
+
     /**
      * Sets the volume of the radio. Range can only be between 0 and 20.
      * @param volume volume of the radio
