@@ -10,7 +10,7 @@ public class Radio {
 
     public Radio() {
         this.status = false;
-        this.volume = 0;
+        this.volume = 10;
         this.radioStations = new HashSet<>();
     }
 
@@ -59,27 +59,29 @@ public class Radio {
     }
 
     public int getVolume() {
-        return volume;
+        return this.volume;
     }
 
     public void setVolume(int volume) {
         this.volume = volume;
     }
 
-    /**
-     * Sets the volume of the radio. Range can only be between 0 and 20.
-     * @param volume volume of the radio
-     */
-    public void setVolume(int volume) {
-        if (isStatus()) {
-            if (volume > 20) {
-                System.out.println("sorry you have reached the maximum volume");
-            } else {
-                this.volume = volume;
-            }
+    public int increaseVolume() {
+        if (getVolume() > 0 && getVolume() < 20) {
+            this.volume += 2;
         } else {
-            System.out.println("Radio is off");
+            System.out.println("The volume can't be increased.");
         }
+        return getVolume();
+    }
+
+    public int decreaseVolume() {
+        if (getVolume() > 0 && getVolume() < 20) {
+            this.volume -= 2;
+        } else {
+            System.out.println("The volume can´t be decreased");
+        }
+        return getVolume();
     }
 
     public void addRadioStations(RadioStation r) {
