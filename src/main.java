@@ -2,7 +2,7 @@ import java.io.Console;
 import java.util.Scanner;
 
 public class main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FrequencyOutOfScopeException {
         Radio r1 = new Radio();
         Song car = new Song("car");
         Song laPlacita = new Song("laPlacita");
