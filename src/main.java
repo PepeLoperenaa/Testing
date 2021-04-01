@@ -5,11 +5,18 @@ public class main {
     public static void main(String[] args) throws FrequencyOutOfScopeException {
         Radio r1 = new Radio();
         Song car = new Song("car");
-        Song laPlacita = new Song("laPlacita");
+        Song cantina = new Song("cantinaBand60");
+        Song example = new Song("example");
+        Song fanfare = new Song("Fanfare");
+        Song panther = new Song("PinkPanther30");
         RadioStation rmfFm = new RadioStation("RmfFm", 86.75);
         RadioStation zet = new RadioStation("zet", 90.00);
         rmfFm.addSong(car);
+        rmfFm.addSong(cantina);
+        rmfFm.addSong(example);
         zet.addSong(car);
+        zet.addSong(fanfare);
+        zet.addSong(panther);
         r1.addRadioStation(rmfFm);
         r1.addRadioStation(zet);
 
