@@ -5,7 +5,7 @@ public class main {
     public static void main(String[] args) throws FrequencyOutOfScopeException {
         Radio r1 = new Radio();
         Song car = new Song("car");
-        Song cantina = new Song("cantinaBand60");
+        Song cantina = new Song("CantinaBand60");
         Song example = new Song("example");
         Song fanfare = new Song("Fanfare60");
         Song panther = new Song("PinkPanther30");
