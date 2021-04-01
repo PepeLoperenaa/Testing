@@ -7,10 +7,10 @@ public class main {
         Song car = new Song("car");
         Song cantina = new Song("cantinaBand60");
         Song example = new Song("example");
-        Song fanfare = new Song("Fanfare");
+        Song fanfare = new Song("Fanfare60");
         Song panther = new Song("PinkPanther30");
         RadioStation rmfFm = new RadioStation("RmfFm", 86.75);
-        RadioStation zet = new RadioStation("zet", 90.00);
+        RadioStation zet = new RadioStation("Zet", 90.00);
         rmfFm.addSong(car);
         rmfFm.addSong(cantina);
         rmfFm.addSong(example);
@@ -24,13 +24,13 @@ public class main {
         //Console con = System.console();
         Scanner con = new Scanner(System.in);
         String input = "";
-        System.out.println("To turn radio on radio input: on");
+        System.out.println("To turn radio on, type in: on");
+        System.out.println("To see all possible commands type in: help");
         input = con.nextLine();
         if (input.equals("on")) {
             r1.turnOnOff();
+            System.out.println("The radio is turned on");
             while (r1.isStatus()) {
-                System.out.println("The radio is turned on");
-                System.out.println("To see all possible commands type in: help");
                 input = con.nextLine();
 
                 if (input.equals("+")) {
@@ -42,8 +42,8 @@ public class main {
                 } else if (input.equals("change")) {
                     double frequency = 0.0;
                     String radioStation = "";
-                    System.out.println("Radio frequency ranges between 85.0 to 105.0 \n Type a double number:");
                     System.out.println("You can change radioStation only after song is finished");
+                    System.out.println("Radio frequency ranges between 85.0 to 105.0 \n Type a double number:");
                     try {
                         radioStation = con.nextLine();
                         frequency = Double.parseDouble(radioStation);
@@ -57,23 +57,40 @@ public class main {
                         System.out.println("Invalid input");
                     }
 
-                } else if (input.equals("exitApplication")) {
-                    System.out.println("Application if off :)");
-                    break;
-                } else if (input.equals("off")) {
-                    System.out.println("The radio has turned off. Goodbye!");
-                } else if (input.equals("help")) {
+                }  else if (input.equals("off")) {
+                    if(r1.isStatus()){
+                        System.out.println("The radio has turned off. Goodbye!");
+                        r1.turnOnOff();
+                    }else{
+                        System.out.println("The radio is already off.");
+                    }
+                }else if(input.equals("on")){
+                    if(r1.isStatus()){
+                        System.out.println("The radio is already on");
+                    }else{
+                        System.out.println("The radio is turned on");
+                        r1.turnOnOff();
+                    }
+                }else if(input.equals("list")){
+                    for (RadioStation radioStation:r1.getRadioStations()){
+                        System.out.println(radioStation.getName()+" frequency:"+radioStation.getFrequency());
+                    }
+                }
+                else if (input.equals("help")) {
                     System.out.println("To turn off radio type in: off ");
                     System.out.println("To turn on radio type in: on ");
                     System.out.println("To increase volume type : +");
                     System.out.println("To decrease volume type : -");
-                    System.out.println("To turn off the RadioStation, press 'off'");
+                    System.out.println("To turn off the Radio, type in off");
+                    System.out.println("To see the list of radioStations, type in: list");
                     System.out.println("To change radioStation type 'change'" +
                             "Radio frequency ranges between 85.0 to 105.0");
-                } else {
-                    System.out.println("Volume has not changed");
+                }else{
+                    System.out.println("Unknown command");
                 }
             }
+        }else{
+            System.out.println("Unknown command");
         }
     }
 }
